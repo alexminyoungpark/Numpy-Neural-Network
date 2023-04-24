@@ -39,25 +39,6 @@ def single_layer_forward_propagation(A_prev, W_curr, b_curr, activation="relu"):
     return activation_func(Z_curr), Z_curr
 
 
-def full_forward_propagation(X, params_values, nn_architecture):
-    memory = {}
-    A_curr = X
-
-    for idx, layer, in enumerate(nn_architecture):
-        layer_idx = idx + 1
-        A_prev = A_curr
-
-        active_function_curr = layer.get("activation")
-        W_curr = params_values.get("W" + str(layer_idx))
-        b_curr = params_values.get("b" + str(layer_idx))
-        A_curr, Z_curr = single_layer_forward_propagation(A_prev, W_curr, b_curr, active_function_curr)
-
-        memory["A" + str(layer_idx)] = A_curr
-        memory["Z" + str(layer_idx)] = Z_curr
-
-    return A_curr, memory
-
-
 if __name__ == "__main__":
     ## mnist data
     mnist = tf.keras.datasets.mnist
