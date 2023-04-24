@@ -51,25 +51,68 @@ if __name__ == "__main__":
     y_test = one_hot_encod(y_test)
     y_train = one_hot_encod(y_train)
 
-    ## set epsilon and make A1
-    epsilon = 0.001
-    A1 = np.copy(y_train)
-    A1[A1 == 1] = 0.991
-    A1[A1 == 0] = 0.001
+#=================================================
+# w/ out activation function
+#=================================================
 
-    ## set Z1
-    Z1 = np.log(A1)
+#    ## set epsilon and make A1
+#    A1 = np.copy(y_train)
+#
+#    ## make W1. computing pseudo-inverse matrix
+#    W1 = np.dot(
+#        A1,
+#        np.linalg.pinv(x_train.T)
+#    )
+#    b1 = np.zeros((10, 1))
+#
+#    ## get accuracy
+#    resA = np.dot(W1, x_test.T)
 
-    ## make W1. computing pseudo-inverse matrix
-    W1 = np.dot(
-        Z1,
-        np.linalg.pinv(x_train.T)
-    )
-    b1 = np.zeros((10, 1))
 
-    ## get accuracy
-    resA, resB = single_layer_forward_propagation(x_test.T, W1, b1, activation="softmax")
-    print(resA.shape)
+#=================================================
+# w/ out activation function
+#=================================================
+#    ## set epsilon and make A1
+#    epsilon = 0.001
+#    A1 = np.copy(y_train)
+#    A1[A1 == 1] = 0.991
+#    A1[A1 == 0] = 0.001
+#
+#    ## set Z1
+#    Z1 = np.log(A1)
+#
+#    ## make W1. computing pseudo-inverse matrix
+#    W1 = np.dot(
+#        Z1,
+#        np.linalg.pinv(x_train.T)
+#    )
+#    b1 = np.zeros((10, 1))
+#
+#    ## get accuracy
+#    resA, resB = single_layer_forward_propagation(x_test.T, W1, b1, activation="softmax")
+#    print(resA.shape)
+
+
+#=================================================
+# 2 layer (3d tensor). w/ activation.
+#=================================================
+#    A1 = np.copy(y_train)
+#    A1 = A1[:, np.newaxis]
+#    A1 = np.repeat(A1, 128, axis=1)
+#
+#    A1[A1 == 1] = 0.991
+#    A1[A1 == 0] = 0.001
+#
+#    Z1 = np.log(A1)
+#
+#    W1 = np.dot(
+#        Z1,
+#        np.linalg.pinv(x_train.T)
+#    )
+#
+#    resA = np.dot(W1, x_test.T)
+#    resA = np.mean(resA, axis=1)
+
     accuracy = 0
     for i, j in zip(resA.T, y_test.T):
         if np.argmax(i) == np.argmax(j):
