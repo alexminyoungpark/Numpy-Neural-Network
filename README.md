@@ -20,8 +20,11 @@ not using a gradient descent to find a global minimum<br>
 just set loss as 0, and back propagating using inversed matrix
 
 #### result
-85.34% accuracy without gradient descent, only one forward propagation w/ only one layer yay<br>
+85.34% accuracy w/ only one layer, no gradient descent, one propagation yay!<br>
 ![acc_without gradient_descent](img1.png)
+
+#### goal
+want model to make matrix if it's needed (if accr is not enough).
 
 #### blocker
 wanna make a two layer model (first output size 128, second output size 10) without doing gradient descent<br>
@@ -34,6 +37,10 @@ I have yellow, I can make green, but not a freakin tensor (double line)
 make a 2 layer model first. (random number)<br>
 do forward propagation.<br>
 and think about what i can do with inversed matrix i got.
+
+#### things to do
+-study matrix<br>
+-deep devising about activation functon
 
 ## fine tuner (not yet)
 ### idea
