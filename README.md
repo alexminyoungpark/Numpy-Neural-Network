@@ -20,7 +20,7 @@ not using a gradient descent to find a global minimum<br>
 just set loss as 0, and back propagating using inversed matrix
 
 #### idea1 - result
-make a single layer nn, (dnn)
+make a single layer nn, (dnn)<br>
 ![acc_without gradient_descent](img1.png)
 
 #### blocker
