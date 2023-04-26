@@ -20,7 +20,7 @@ not using a gradient descent to find a global minimum<br>
 just set loss as 0, and back propagating using inversed matrix
 
 #### result
-make a single layer nn, (dnn)<br>
+85.34% accuracy without gradient descent, only one forward propagation w/ only one layer yay<br>
 ![acc_without gradient_descent](img1.png)
 
 #### blocker
