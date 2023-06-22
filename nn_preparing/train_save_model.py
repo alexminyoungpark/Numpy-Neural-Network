@@ -31,10 +31,10 @@ if __name__ == "__main__":
         tf.keras.layers.Dense(25, input_shape=(10, ), activation='relu'),
         tf.keras.layers.Dense(50, activation='relu'),
         tf.keras.layers.Dense(128, activation='relu'),
-        tf.keras.layers.Dense(784, activation='relu'),
+        tf.keras.layers.Dense(784, activation='sigmoid'),
     ])
 
-    loss_function = tf.keras.losses.MeanSquaredError()
+    loss_function = tf.keras.losses.CategoricalCrossentropy()
     optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
 
     model.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
@@ -43,4 +43,4 @@ if __name__ == "__main__":
 
     test_loss, test_acc = model.evaluate(y_test, x_test)
     print('Test accuracy: ', test_acc)
-    model.save('./relu_gen_num.h5')
+    model.save('./cce_gen_num.h5')

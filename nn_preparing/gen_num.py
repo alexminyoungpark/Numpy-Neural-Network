@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 if __name__ == "__main__":
-    model = tf.keras.models.load_model("relu_gen_num.h5")
+    model = tf.keras.models.load_model("cce_gen_num.h5")
 
     label_0 = np.array([[1, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
     label_1 = np.array([[0, 1, 0, 0, 0, 0, 0, 0, 0, 0]])
@@ -27,13 +27,13 @@ if __name__ == "__main__":
     img_8= model.predict(label_8).reshape((28, 28))
     img_9= model.predict(label_9).reshape((28, 28))
 
-    plt.imsave("relu_0.png", img_0, cmap="gray")
-    plt.imsave("relu_1.png", img_1, cmap="gray")
-    plt.imsave("relu_2.png", img_2, cmap="gray")
-    plt.imsave("relu_3.png", img_3, cmap="gray")
-    plt.imsave("relu_4.png", img_4, cmap="gray")
-    plt.imsave("relu_5.png", img_5, cmap="gray")
-    plt.imsave("relu_6.png", img_6, cmap="gray")
-    plt.imsave("relu_7.png", img_7, cmap="gray")
-    plt.imsave("relu_8.png", img_8, cmap="gray")
-    plt.imsave("relu_9.png", img_9, cmap="gray")
+    plt.imsave("cce_0.png", img_0, cmap="gray")
+    plt.imsave("cce_1.png", img_1, cmap="gray")
+    plt.imsave("cce_2.png", img_2, cmap="gray")
+    plt.imsave("cce_3.png", img_3, cmap="gray")
+    plt.imsave("cce_4.png", img_4, cmap="gray")
+    plt.imsave("cce_5.png", img_5, cmap="gray")
+    plt.imsave("cce_6.png", img_6, cmap="gray")
+    plt.imsave("cce_7.png", img_7, cmap="gray")
+    plt.imsave("cce_8.png", img_8, cmap="gray")
+    plt.imsave("cce_9.png", img_9, cmap="gray")
