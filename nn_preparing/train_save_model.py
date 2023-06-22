@@ -26,23 +26,21 @@ if __name__ == "__main__":
     x_test = flatten(x_test)
     y_test = one_hot_encod(y_test)
     y_train = one_hot_encod(y_train)
-    print(y_train[0])
 
-#    model = tf.keras.Sequential([
-#        tf.keras.layers.Dense(128, input_shape=(10, ), activation='relu'),
-#        tf.keras.layers.Dense(25, activation='relu'),
-#        tf.keras.layers.Dense(50, activation='relu'),
-#        tf.keras.layers.Dense(50, activation='relu'),
-#        tf.keras.layers.Dense(784, activation='sigmoid'),
-#    ])
-#
-#    loss_function = tf.keras.losses.MeanSquaredError()
-#    optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
-#
-#    model.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
-#
-#    model.fit(y_train, x_train, epochs=20, batch_size=60000)
-#
-#    test_loss, test_acc = model.evaluate(y_test, x_test)
-#    print('Test accuracy: ', test_acc)
-#    model.save('./gan_num.h5')
+    model = tf.keras.Sequential([
+        tf.keras.layers.Dense(25, input_shape=(10, ), activation='relu'),
+        tf.keras.layers.Dense(50, activation='relu'),
+        tf.keras.layers.Dense(128, activation='relu'),
+        tf.keras.layers.Dense(784, activation='sigmoid'),
+    ])
+
+    loss_function = tf.keras.losses.MeanSquaredError()
+    optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
+
+    model.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
+
+    model.fit(y_train, x_train, epochs=10, batch_size=64)
+
+    test_loss, test_acc = model.evaluate(y_test, x_test)
+    print('Test accuracy: ', test_acc)
+    model.save('./gen_num.h5')

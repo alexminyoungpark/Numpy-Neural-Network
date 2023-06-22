@@ -3,18 +3,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 if __name__ == "__main__":
-    model = tf.keras.models.load_model("gan_num.h5")
-
-#    gpt_label0 = tf.keras.utils.to_categorical([0], num_classes=10)
-#    gpt_label1 = tf.keras.utils.to_categorical([1], num_classes=10)
-#    gpt_label2 = tf.keras.utils.to_categorical([2], num_classes=10)
-#    
-#    print(gpt_label0)
-#    print(gpt_label1)
-#    print(gpt_label2)
+    model = tf.keras.models.load_model("gen_num.h5")
 
     label_0 = np.array([[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]])
-    label_1 = np.array([[0, 1, 0, 0, 0, 0, 0, 0, 0, 0]])
+    label_1 = np.array([[0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]])
     label_2 = np.array([[0, 0, 1, 0, 0, 0, 0, 0, 0, 0]])
     label_3 = np.array([[0, 0, 0, 1, 0, 0, 0, 0, 0, 0]])
     label_4 = np.array([[0, 0, 0, 0, 1, 0, 0, 0, 0, 0]])
