@@ -34,13 +34,13 @@ if __name__ == "__main__":
         tf.keras.layers.Dense(784, activation='sigmoid'),
     ])
 
-    loss_function = tf.keras.losses.CategoricalCrossentropy()
+    loss_function = tf.keras.losses.MeanSquaredError()
     optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
 
     model.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
 
-    model.fit(y_train, x_train, epochs=10, batch_size=60)
+    model.fit(y_train, x_train, epochs=10, batch_size=10000)
 
     test_loss, test_acc = model.evaluate(y_test, x_test)
     print('Test accuracy: ', test_acc)
-    model.save('./cce_gen_num.h5')
+    model.save('./batch_size_10000_gen_num.h5')
