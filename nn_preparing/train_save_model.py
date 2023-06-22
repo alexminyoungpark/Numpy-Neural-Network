@@ -31,7 +31,7 @@ if __name__ == "__main__":
         tf.keras.layers.Dense(25, input_shape=(10, ), activation='relu'),
         tf.keras.layers.Dense(50, activation='relu'),
         tf.keras.layers.Dense(128, activation='relu'),
-        tf.keras.layers.Dense(784, activation='sigmoid'),
+        tf.keras.layers.Dense(784, activation='relu'),
     ])
 
     loss_function = tf.keras.losses.MeanSquaredError()
@@ -39,8 +39,8 @@ if __name__ == "__main__":
 
     model.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
 
-    model.fit(y_train, x_train, epochs=10, batch_size=64)
+    model.fit(y_train, x_train, epochs=10, batch_size=60)
 
     test_loss, test_acc = model.evaluate(y_test, x_test)
     print('Test accuracy: ', test_acc)
-    model.save('./gen_num.h5')
+    model.save('./relu_gen_num.h5')
