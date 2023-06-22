@@ -23,12 +23,17 @@ model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', m
 # Training
 model.fit(y_train, x_train, batch_size=64, epochs=10)
 
-model.save('./gpt.h5')
 ## Inference
-#label = tf.keras.utils.to_categorical([5], num_classes=10)  # Example label (5)
-#generated_image = model.predict(label)
-#
-## Visualize the generated image
-#import matplotlib.pyplot as plt
-#plt.imsave("5.png", generated_image[0], cmap="gray")
+label0 = tf.keras.utils.to_categorical([0], num_classes=10)  # Example label (5)
+label1 = tf.keras.utils.to_categorical([1], num_classes=10)  # Example label (5)
+label2 = tf.keras.utils.to_categorical([2], num_classes=10)  # Example label (5)
+generated_image0 = model.predict(label0)
+generated_image1 = model.predict(label1)
+generated_image2 = model.predict(label2)
+
+# Visualize the generated image
+import matplotlib.pyplot as plt
+plt.imsave("gpt_0.png", generated_image0[0], cmap="gray")
+plt.imsave("gpt_1.png", generated_image1[0], cmap="gray")
+plt.imsave("gpt_2.png", generated_image2[0], cmap="gray")
 
