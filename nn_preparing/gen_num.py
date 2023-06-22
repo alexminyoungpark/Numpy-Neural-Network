@@ -13,7 +13,7 @@ if __name__ == "__main__":
 #    print(gpt_label1)
 #    print(gpt_label2)
 
-    label_0 = np.array([[1, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
+    label_0 = np.array([[1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]])
     label_1 = np.array([[0, 1, 0, 0, 0, 0, 0, 0, 0, 0]])
     label_2 = np.array([[0, 0, 1, 0, 0, 0, 0, 0, 0, 0]])
     label_3 = np.array([[0, 0, 0, 1, 0, 0, 0, 0, 0, 0]])
