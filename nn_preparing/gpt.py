@@ -18,7 +18,7 @@ model.add(Dense(784, activation='sigmoid'))  # Output layer for number images
 model.add(Reshape((28, 28)))  # Reshape output to image dimensions
 
 # Compile model
-model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy'])
+model.compile(optimizer=Adam(learning_rate=0.001), loss='mse', metrics=['accuracy'])
 
 # Training
 model.fit(y_train, x_train, batch_size=64, epochs=10)
