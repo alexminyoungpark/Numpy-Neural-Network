@@ -18,16 +18,17 @@ model.add(Dense(784, activation='sigmoid'))  # Output layer for number images
 model.add(Reshape((28, 28)))  # Reshape output to image dimensions
 
 # Compile model
-model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy')
+model.compile(optimizer=Adam(learning_rate=0.001), loss='binary_crossentropy', metrics=['accuracy'])
 
 # Training
-model.fit(y_train, x_train, batch_size=64, epochs=10, validation_split=0.2)
+model.fit(y_train, x_train, batch_size=64, epochs=10)
 
-# Inference
-label = tf.keras.utils.to_categorical([5], num_classes=10)  # Example label (5)
-generated_image = model.predict(label)
-
-# Visualize the generated image
-import matplotlib.pyplot as plt
-plt.imsave("5.png", generated_image[0], cmap="gray")
+model.save('./gpt.h5')
+## Inference
+#label = tf.keras.utils.to_categorical([5], num_classes=10)  # Example label (5)
+#generated_image = model.predict(label)
+#
+## Visualize the generated image
+#import matplotlib.pyplot as plt
+#plt.imsave("5.png", generated_image[0], cmap="gray")
 

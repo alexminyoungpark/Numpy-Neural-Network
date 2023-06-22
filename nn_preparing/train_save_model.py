@@ -29,15 +29,15 @@ if __name__ == "__main__":
 
     print(x_train.shape)
     model = tf.keras.Sequential([
-        tf.keras.layers.Dense(128, activation='softmax'),
+        tf.keras.layers.Dense(128, input_shape=(10, ), activation='relu'),
         tf.keras.layers.Dense(25, activation='relu'),
         tf.keras.layers.Dense(50, activation='relu'),
         tf.keras.layers.Dense(50, activation='relu'),
-        tf.keras.layers.Dense(784, activation='relu'),
+        tf.keras.layers.Dense(784, activation='sigmoid'),
     ])
 
     loss_function = tf.keras.losses.MeanSquaredError()
-    optimizer = tf.keras.optimizers.AdamW(learning_rate=0.005)
+    optimizer = tf.keras.optimizers.Adam(learning_rate=0.001)
 
     model.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
 
