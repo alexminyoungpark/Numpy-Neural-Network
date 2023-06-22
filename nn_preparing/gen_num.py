@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 if __name__ == "__main__":
-    model = tf.keras.models.load_model("gpt.h5")
+    model = tf.keras.models.load_model("gan_num.h5")
 
 #    gpt_label0 = tf.keras.utils.to_categorical([0], num_classes=10)
 #    gpt_label1 = tf.keras.utils.to_categorical([1], num_classes=10)
