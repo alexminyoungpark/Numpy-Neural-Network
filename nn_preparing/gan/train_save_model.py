@@ -58,7 +58,7 @@ def main(
 
     model.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
 
-    model.fit(y_train, x_train, epochs=100, batch_size=60000)
+    model.fit(y_train, x_train, epochs=1000, batch_size=60000)
 
     test_loss, test_acc = model.evaluate(y_test, x_test)
     print('Test accuracy: ', test_acc)

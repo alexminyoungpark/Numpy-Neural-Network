@@ -24,7 +24,7 @@ def main(
     epoch_size: int = 1,
 ) -> None:
 
-    model = tf.keras.models.load_model(f"model_{batch_size}_{epoch_size}.h5")
+    model = tf.keras.models.load_model(f"model_{batch_size}_100.h5")
 
     label_0 = np.array([[1, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
     label_1 = np.array([[0, 1, 0, 0, 0, 0, 0, 0, 0, 0]])
@@ -63,4 +63,4 @@ def main(
 if __name__ == "__main__":
 #    kwargs = vars(parser.parse_args())
 #    main(**kwargs)
-    main(60000, 100)
+    main(60000, 1000)
