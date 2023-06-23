@@ -2,20 +2,20 @@ import argparse
 import numpy as np
 import tensorflow as tf
 
-parser = argparse.ArgumentParser(
-    prog=__name__.rsplit(".", 1)[-1],
-    formatter_class=argparse.RawTextHelpFormatter,
-)
-parser.add_argument(
-    "--batch-size",
-    default=1,
-    type=int,
-)
-parser.add_argument(
-    "--epoch-size",
-    default=1,
-    type=int,
-)
+#parser = argparse.ArgumentParser(
+#    prog=__name__.rsplit(".", 1)[-1],
+#    formatter_class=argparse.RawTextHelpFormatter,
+#)
+#parser.add_argument(
+#    "--batch-size",
+#    default=1,
+#    type=int,
+#)
+#parser.add_argument(
+#    "--epoch-size",
+#    default=1,
+#    type=int,
+#)
 
 def one_hot_encod(dataset):
     size = dataset.shape[-1]
@@ -58,13 +58,14 @@ def main(
 
     model.compile(optimizer=optimizer, loss=loss_function, metrics=['accuracy'])
 
-    model.fit(y_train, x_train, epochs=epoch_size, batch_size=batch_size)
+    model.fit(y_train, x_train, epochs=100, batch_size=60000)
 
     test_loss, test_acc = model.evaluate(y_test, x_test)
     print('Test accuracy: ', test_acc)
-    model.save(f'./model_{batch_size}_{epoch_size}.h5')
+    model.save(f'./model_60000_100.h5')
 
 
 if __name__ == "__main__":
-    kwargs = vars(parser.parse_args())
-    main(**kwargs)
+#    kwargs = vars(parser.parse_args())
+#    main(**kwargs)
+    main()

@@ -3,20 +3,20 @@ import tensorflow as tf
 import matplotlib.pyplot as plt
 import numpy as np
 
-parser = argparse.ArgumentParser(
-    prog=__name__.rsplit(".", 1)[-1],
-    formatter_class=argparse.RawTextHelpFormatter,
-)
-parser.add_argument(
-    "--batch-size",
-    default=1,
-    type=int,
-)
-parser.add_argument(
-    "--epoch-size",
-    default=1,
-    type=int,
-)
+#parser = argparse.ArgumentParser(
+#    prog=__name__.rsplit(".", 1)[-1],
+#    formatter_class=argparse.RawTextHelpFormatter,
+#)
+#parser.add_argument(
+#    "--batch-size",
+#    default=1,
+#    type=int,
+#)
+#parser.add_argument(
+#    "--epoch-size",
+#    default=1,
+#    type=int,
+#)
 
 
 def main(
@@ -61,5 +61,6 @@ def main(
 
 
 if __name__ == "__main__":
-    kwargs = vars(parser.parse_args())
-    main(**kwargs)
+#    kwargs = vars(parser.parse_args())
+#    main(**kwargs)
+    main(60000, 100)
