@@ -62,7 +62,7 @@ def main(
 
     test_loss, test_acc = model.evaluate(y_test, x_test)
     print('Test accuracy: ', test_acc)
-    model.save(f'./model_60000_100.h5')
+    model.save(f'./model_60000_1000.h5')
 
 
 if __name__ == "__main__":

@@ -24,7 +24,7 @@ def main(
     epoch_size: int = 1,
 ) -> None:
 
-    model = tf.keras.models.load_model(f"model_{batch_size}_100.h5")
+    model = tf.keras.models.load_model(f"model_{batch_size}_1000.h5")
 
     label_0 = np.array([[1, 0, 0, 0, 0, 0, 0, 0, 0, 0]])
     label_1 = np.array([[0, 1, 0, 0, 0, 0, 0, 0, 0, 0]])
