@@ -1,5 +1,6 @@
 import numpy as np
 import tensorflow as tf
+import matplotlib.pyplot as plt
 
 
 def one_hot_encod(dataset):
@@ -39,11 +40,24 @@ def single_layer_forward_propagation(A_prev, W_curr, b_curr, activation="relu"):
     return activation_func(Z_curr), Z_curr
 
 
+def shift_and_pad_image(image, num):
+    shifted_image = np.zeros_like(image)
+    shifted_image[num:, num:] = image[:-num, :-num]
+    return shifted_image
+
+
 if __name__ == "__main__":
     ## mnist data
     mnist = tf.keras.datasets.mnist
     (x_train, y_train), (x_test, y_test) = mnist.load_data()
     x_train, x_test = x_train / 255.0, x_test / 255.0
+
+    plt.imsave("original.png", x_train[0], cmap="gray")
+
+    for idx, img in enumerate(x_train):
+        x_train[idx] = shift_and_pad_image(img, 2)
+
+    plt.imsave("shift.png", x_train[0], cmap="gray")
 
     ## process data
     x_train = flatten(x_train)
@@ -51,69 +65,15 @@ if __name__ == "__main__":
     y_test = one_hot_encod(y_test)
     y_train = one_hot_encod(y_train)
 
-#=================================================
-# w/ out activation function
-#=================================================
-
-    ## set epsilon and make A1
     A1 = np.copy(y_train)
 
-    ## make W1. computing pseudo-inverse matrix
-    W1 = np.dot(
+    w = np.load("./pinv.npy")
+    shift_w = np.dot(
         A1,
         np.linalg.pinv(x_train.T)
     )
-    b1 = np.zeros((10, 1))
 
-    np.save("pinv.npy", W1)
-
-    ## get accuracy
-    resA = np.dot(W1, x_test.T)
-
-
-#=================================================
-# w/ activation function
-#=================================================
-#    ## set epsilon and make A1
-#    epsilon = 0.001
-#    A1 = np.copy(y_train)
-#    A1[A1 == 1] = 0.991
-#    A1[A1 == 0] = 0.001
-#
-#    ## set Z1
-#    Z1 = np.log(A1)
-#
-#    ## make W1. computing pseudo-inverse matrix
-#    W1 = np.dot(
-#        Z1,
-#        np.linalg.pinv(x_train.T)
-#    )
-#    b1 = np.zeros((10, 1))
-#
-#    ## get accuracy
-#    resA, resB = single_layer_forward_propagation(x_test.T, W1, b1, activation="softmax")
-#    print(resA.shape)
-
-
-#=================================================
-# 2 layer (3d tensor). w/ activation.
-#=================================================
-#    A1 = np.copy(y_train)
-#    A1 = A1[:, np.newaxis]
-#    A1 = np.repeat(A1, 128, axis=1)
-#
-#    A1[A1 == 1] = 0.991
-#    A1[A1 == 0] = 0.001
-#
-#    Z1 = np.log(A1)
-#
-#    W1 = np.dot(
-#        Z1,
-#        np.linalg.pinv(x_train.T)
-#    )
-#
-#    resA = np.dot(W1, x_test.T)
-#    resA = np.mean(resA, axis=1)
+    resA = np.dot(shift_w, x_test.T)
 
     accuracy = 0
     for i, j in zip(resA.T, y_test.T):
