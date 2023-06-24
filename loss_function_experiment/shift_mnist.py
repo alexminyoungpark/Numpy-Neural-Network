@@ -60,24 +60,42 @@ if __name__ == "__main__":
     plt.imsave("shift.png", x_train[0], cmap="gray")
 
     ## process data
-    x_train = flatten(x_train)
-    x_test = flatten(x_test)
-    y_test = one_hot_encod(y_test)
-    y_train = one_hot_encod(y_train)
+#    x_train = flatten(x_train)
+#    x_test = flatten(x_test)
+#    y_test = one_hot_encod(y_test)
+#    y_train = one_hot_encod(y_train)
 
     A1 = np.copy(y_train)
 
-    w = np.load("./pinv.npy")
-    shift_w = np.dot(
-        A1,
-        np.linalg.pinv(x_train.T)
-    )
+#    w = np.load("./pinv.npy")
+#    shift_w = np.dot(
+#        A1,
+#        np.linalg.pinv(x_train.T)
+#    )
 
-    resA = np.dot(shift_w, x_test.T)
+    model = tf.keras.Sequential([
+        tf.keras.layers.Flatten(input_shape=(28,28)),
+        tf.keras.layers.Dense(10, activation="softmax")
+    ])
 
-    accuracy = 0
-    for i, j in zip(resA.T, y_test.T):
-        if np.argmax(i) == np.argmax(j):
-            accuracy += 1
+    loss_function = tf.keras.losses.SparseCategoricalCrossentropy()
+    optimizer = tf.keras.optimizers.SGD(learning_rate=0.2, momentum=0.0)
 
-    print(f"accuracy: {accuracy/100}%")
+    model.compile(optimizer=optimizer, loss=loss_function, metrics=["accuracy"])
+    model.fit(x_train, y_train, epochs=10, batch_size=600)
+    test_loss, test_acc = model.evaluate(x_test, y_test)
+    print("Test accuracy", test_acc)
+
+#    weights = model.get_weights()
+#    w = weights[0]
+#    b = weights[1]
+#    b = np.reshape(b, (10, 1))
+#
+#    resA = np.dot(w.T, x_test.T) + b
+#
+#    accuracy = 0
+#    for i, j in zip(resA.T, y_test.T):
+#        if np.argmax(i) == np.argmax(j):
+#            accuracy += 1
+#
+#    print(f"accuracy: {accuracy/100}%")

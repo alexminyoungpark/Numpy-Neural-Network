@@ -4,3 +4,6 @@ train model with bias -> 92.37
 train model without bias -> 92.33
 
 inversed matrix -> 85.34
+
+shifted dataset, inversed matrix -> 19.82
+shifted dataset, trained model with bias -> 21.96
