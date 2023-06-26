@@ -36,7 +36,7 @@ def main(
 #    label_7 = np.array([[0, 0, 0, 0, 0, 0, 0, 1, 0, 0]])
 #    label_8 = np.array([[0, 0, 0, 0, 0, 0, 0, 0, 1, 0]])
 #    label_9 = np.array([[0, 0, 0, 0, 0, 0, 0, 0, 0, 1]])
-    label_80 = np.array([[1, 0, 0, 0, 0, 0, 0, 0, 1, 0]])
+    label_83 = np.array([[0, 0, 0, 1, 0, 0, 0, 0, 1, 0]])
 
 #    img_0= model.predict(label_0).reshape((28, 28))
 #    img_1= model.predict(label_1).reshape((28, 28))
@@ -48,7 +48,7 @@ def main(
 #    img_7= model.predict(label_7).reshape((28, 28))
 #    img_8= model.predict(label_8).reshape((28, 28))
 #    img_9= model.predict(label_9).reshape((28, 28))
-    img_80= model.predict(label_80).reshape((28, 28))
+    img_83= model.predict(label_83).reshape((28, 28))
 
 #    plt.imsave(f"model_{batch_size}_{epoch_size}/{batch_size}_{epoch_size}_0.png", img_0, cmap="gray")
 #    plt.imsave(f"model_{batch_size}_{epoch_size}/{batch_size}_{epoch_size}_1.png", img_1, cmap="gray")
@@ -60,7 +60,7 @@ def main(
 #    plt.imsave(f"model_{batch_size}_{epoch_size}/{batch_size}_{epoch_size}_7.png", img_7, cmap="gray")
 #    plt.imsave(f"model_{batch_size}_{epoch_size}/{batch_size}_{epoch_size}_8.png", img_8, cmap="gray")
 #    plt.imsave(f"model_{batch_size}_{epoch_size}/{batch_size}_{epoch_size}_9.png", img_9, cmap="gray")
-    plt.imsave(f"80.png", img_80, cmap="gray")
+    plt.imsave(f"83.png", img_83, cmap="gray")
 
 
 if __name__ == "__main__":
