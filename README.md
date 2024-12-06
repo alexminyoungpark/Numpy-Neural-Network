@@ -31,7 +31,6 @@ wanna make a two layer model (first output size 128, second output size 10) with
 it's difficult to split 1 matrix to 2.<br>
 
 ![acc_without gradient_descent](img2.png)<br>
-I have yellow, I can make green, but not a freakin tensor (double line)
 
 #### plan
 make a 2 layer model first. (random number)<br>
@@ -41,7 +40,3 @@ and think about what i can do with inversed matrix i got.
 #### things to do
 -study matrix<br>
 -deep devising about activation functon
-
-## fine tuner (not yet)
-### idea
-tweezering the weight.
