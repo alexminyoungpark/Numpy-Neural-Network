@@ -1,4 +1,6 @@
-# lab
+# Numpy로 DNN 만들기
+# DNN과 numpy pseudo inverse로 만든 regression 성증 비교
+# 만든 DNN을 뒤집어서 index로 28*28 size 숫자 이미지 생성
 
 ## nn_preparing
 just a simple dnn model made only by numpy.<br>
@@ -23,20 +25,5 @@ just set loss as 0, and back propagating using inversed matrix
 85.34% accuracy w/ only one layer, no gradient descent, one propagation yay!<br>
 ![acc_without gradient_descent](img1.png)
 
-#### goal
-want model to make matrix if it's needed (if accr is not enough).
-
-#### blocker
-wanna make a two layer model (first output size 128, second output size 10) without doing gradient descent<br>
-it's difficult to split 1 matrix to 2.<br>
-
-![acc_without gradient_descent](img2.png)<br>
-
-#### plan
-make a 2 layer model first. (random number)<br>
-do forward propagation.<br>
-and think about what i can do with inversed matrix i got.
-
-#### things to do
--study matrix<br>
--deep devising about activation functon
+입력 index로 0과 8을 줬을 때 결과
+!(nn_preraring/gan/80.png)
